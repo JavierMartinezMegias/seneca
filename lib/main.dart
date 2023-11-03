@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:seneca/screens/login_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:seneca/config/router.dart';
+import 'package:seneca/presentation/provider/provider.dart';
 
 void main() => runApp(const Seneca());
 
@@ -8,10 +10,15 @@ class Seneca extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Seneca',
-      home: LoginScreen()
-    );
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppProvider()),
+      ],
+      child: MaterialApp.router(
+        routerConfig: appRouter,
+        debugShowCheckedModeBanner: false,
+        title: 'Seneca',
+      ),
+    ); 
   }
 }
