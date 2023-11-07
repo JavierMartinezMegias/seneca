@@ -38,7 +38,8 @@ class _LoginScreen extends State<LoginScreen> {
               const SizedBox(height: 20.0),
               TextField(
                 cursorColor: Colors.white,
-                controller: userController,             
+                controller: userController, 
+                style: const TextStyle(color: Colors.white),            
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white.withOpacity(0.17),
@@ -64,6 +65,7 @@ class _LoginScreen extends State<LoginScreen> {
               TextField(
                 cursorColor: Colors.white,
                 controller: passwordController,
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white.withOpacity(0.17),
@@ -118,14 +120,31 @@ class _LoginScreen extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 80.0),
-              const Text("No recuerdo mi contraseña",style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                decoration: TextDecoration.underline,
-                decorationStyle: TextDecorationStyle.solid,
-                decorationThickness: 2
-              ),),
+              RichText(
+                text: TextSpan(
+                  children:[
+                    const TextSpan(
+                      text: "No recuerdo mi contraseña",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const WidgetSpan(
+                      child: SizedBox(width: 4.0), 
+                    ),
+                    WidgetSpan(
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 2.0), 
+                        width: 200, 
+                        height: 2.0,
+                      ),
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
+              ),
               const SizedBox(height: 140.0),
               Transform.scale(
                 scale: 0.8,
