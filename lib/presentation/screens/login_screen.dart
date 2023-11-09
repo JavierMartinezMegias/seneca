@@ -145,13 +145,13 @@ class _LoginScreen extends State<LoginScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 140.0),
+              const SizedBox(height: 130.0),
               Transform.scale(
                 scale: 0.8,
                 child: Image.asset("assets/images/JuntaAndalucia.png"),
               ),
         
-              const SizedBox(height: 40.0),
+              const SizedBox(height: 20.0),
               Container(
               margin: const EdgeInsetsDirectional.only(start: 290),
                 child: const Text("v11.3.0", style: TextStyle(
