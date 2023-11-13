@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:seneca/config/router.dart';
 import 'package:seneca/presentation/provider/provider.dart';
+import 'package:seneca/services/firebase_service.dart';
+import 'package:seneca/utils/constants.dart';
+import 'package:seneca/utils/google_Sing_in.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,7 +31,7 @@ class _LoginScreen extends State<LoginScreen> {
           child: Padding(
             padding: const EdgeInsets.all(25.0),
             child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-              const SizedBox(height: 130.0),
+              const SizedBox(height: 60.0),
               const Text(
                 'iSéneca',
                 style: TextStyle(
@@ -119,7 +123,9 @@ class _LoginScreen extends State<LoginScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 80.0),
+              const SizedBox(height: 20.0),
+              const GoogleSignIn(),
+              const SizedBox(height: 60.0),
               RichText(
                 text: TextSpan(
                   children:[
@@ -145,7 +151,7 @@ class _LoginScreen extends State<LoginScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 130.0),
+              const SizedBox(height: 70.0),
               Transform.scale(
                 scale: 0.8,
                 child: Image.asset("assets/images/JuntaAndalucia.png"),

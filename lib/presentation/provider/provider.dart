@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AppProvider extends ChangeNotifier{
@@ -9,6 +10,14 @@ class AppProvider extends ChangeNotifier{
     user = usuario;
     return usuario != "" && usuario == password && password != "";
 
+  }
+
+  bool compruebaLoginGoogle (){
+
+    User? userGoogle = FirebaseAuth.instance.currentUser;
+    user = userGoogle!.displayName!;
+    return user.isNotEmpty;
+    
   }
 
 }

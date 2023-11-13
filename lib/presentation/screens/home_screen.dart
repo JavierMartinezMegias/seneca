@@ -12,7 +12,8 @@ class HomeScreen extends StatelessWidget {
 
     return  Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      body: Padding(
+      body: 
+      Padding(
         padding: const EdgeInsets.all(0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -27,6 +28,7 @@ class HomeScreen extends StatelessWidget {
                       ),                               
               ),
               const SizedBox(height: 50),
+              Text(provider.user)
             ],
           )
         ),
