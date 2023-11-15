@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:seneca/presentation/provider/provider.dart';
+import 'package:seneca/services/firebase_service.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,30 +11,32 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = context.watch<AppProvider>();
 
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      body: 
-      Padding(
-        padding: const EdgeInsets.all(0),
+      body: Padding(
+          padding: const EdgeInsets.all(0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(width: 500,height: 150,color: Colors.blue,child: const Center(child :Text(
+              Container(
+                width: 500,
+                height: 150,
+                color: Colors.blue,
+                child: const Center(
+                    child: Text(
                   'iSéneca',
                   style: TextStyle(
                       fontSize: 60,
                       color: Colors.white,
                       fontWeight: FontWeight.w700),
-                        )
-                      ),                               
+                )),
               ),
               const SizedBox(height: 50),
               Text(provider.user)
             ],
-          )
-        ),
-         bottomNavigationBar: Container(
-          decoration: BoxDecoration(
+          )),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.3),
@@ -41,16 +44,16 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-           child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                 children: <Widget>[
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
             Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 IconButton(
                   color: const Color.fromARGB(255, 141, 141, 141),
                   onPressed: () {
-                    
+                    FirebaseService().signOutFromGoogle();
                   },
                   icon: const Icon(Icons.home),
                 ),
@@ -62,9 +65,7 @@ class HomeScreen extends StatelessWidget {
               children: <Widget>[
                 IconButton(
                   color: const Color.fromARGB(255, 141, 141, 141),
-                  onPressed: () {
-                    
-                  },
+                  onPressed: () {},
                   icon: const Icon(Icons.calendar_month),
                 ),
                 const Text('Agenda'),
@@ -75,9 +76,7 @@ class HomeScreen extends StatelessWidget {
               children: <Widget>[
                 IconButton(
                   color: const Color.fromARGB(255, 141, 141, 141),
-                  onPressed: () {
-                    
-                  },
+                  onPressed: () {},
                   icon: const Icon(Icons.textsms_outlined),
                 ),
                 const Text('Comunicaciones'),
@@ -88,17 +87,15 @@ class HomeScreen extends StatelessWidget {
               children: <Widget>[
                 IconButton(
                   color: const Color.fromARGB(255, 141, 141, 141),
-                  onPressed: () {
-                    
-                  },
+                  onPressed: () {},
                   icon: const Icon(Icons.menu),
                 ),
                 const Text('Menú'),
               ],
             ),
-                 ],
-               ),
-         ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:seneca/presentation/provider/provider.dart';
 import 'package:seneca/services/firebase_service.dart';
 import 'package:seneca/utils/constants.dart';
 import 'package:seneca/utils/google_Sing_in.dart';
+import 'package:seneca/utils/getUser.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,23 +15,22 @@ class LoginScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _LoginScreen();
 }
 
-
 class _LoginScreen extends State<LoginScreen> {
-
   bool viewPassword = true;
   TextEditingController passwordController = TextEditingController();
   TextEditingController userController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-   
-   final provider = context.watch<AppProvider>();
+    
+    final provider = context.watch<AppProvider>();
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 31, 87, 184),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(25.0),
-            child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               const SizedBox(height: 60.0),
               const Text(
                 'iSéneca',
@@ -42,8 +42,8 @@ class _LoginScreen extends State<LoginScreen> {
               const SizedBox(height: 20.0),
               TextField(
                 cursorColor: Colors.white,
-                controller: userController, 
-                style: const TextStyle(color: Colors.white),            
+                controller: userController,
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white.withOpacity(0.17),
@@ -53,7 +53,9 @@ class _LoginScreen extends State<LoginScreen> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
-                        style: BorderStyle.solid, color: Colors.white, width: 2),
+                        style: BorderStyle.solid,
+                        color: Colors.white,
+                        width: 2),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   focusedBorder: OutlineInputBorder(
@@ -90,12 +92,16 @@ class _LoginScreen extends State<LoginScreen> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
-                        style: BorderStyle.solid, color: Colors.white, width: 2),
+                        style: BorderStyle.solid,
+                        color: Colors.white,
+                        width: 2),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
-                        style: BorderStyle.solid, color: Colors.white, width: 2),
+                        style: BorderStyle.solid,
+                        color: Colors.white,
+                        width: 2),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
@@ -107,7 +113,8 @@ class _LoginScreen extends State<LoginScreen> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    if(provider.compruebaLogin(userController.text, passwordController.text)){
+                    if (provider.compruebaLogin(
+                        userController.text, passwordController.text)) {
                       context.goNamed("home");
                     }
                   },
@@ -128,7 +135,7 @@ class _LoginScreen extends State<LoginScreen> {
               const SizedBox(height: 60.0),
               RichText(
                 text: TextSpan(
-                  children:[
+                  children: [
                     const TextSpan(
                       text: "No recuerdo mi contraseña",
                       style: TextStyle(
@@ -138,12 +145,12 @@ class _LoginScreen extends State<LoginScreen> {
                       ),
                     ),
                     const WidgetSpan(
-                      child: SizedBox(width: 4.0), 
+                      child: SizedBox(width: 4.0),
                     ),
                     WidgetSpan(
                       child: Container(
-                        margin: const EdgeInsets.only(top: 2.0), 
-                        width: 200, 
+                        margin: const EdgeInsets.only(top: 2.0),
+                        width: 200,
                         height: 2.0,
                       ),
                     ),
@@ -156,17 +163,15 @@ class _LoginScreen extends State<LoginScreen> {
                 scale: 0.8,
                 child: Image.asset("assets/images/JuntaAndalucia.png"),
               ),
-        
               const SizedBox(height: 20.0),
               Container(
-              margin: const EdgeInsetsDirectional.only(start: 290),
-                child: const Text("v11.3.0", style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold
-                  
-                  
-                 ),),
-               )
+                margin: const EdgeInsetsDirectional.only(start: 290),
+                child: const Text(
+                  "v11.3.0",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              )
             ]),
           ),
         ));
